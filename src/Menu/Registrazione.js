@@ -204,9 +204,8 @@ function Registrazione() {
 
         <nav class="navbar bg-danger">
            <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1 text-light fs-2">Cantina Sociale Bordeaux</span>
-
-                 <button type="button" class="btn btn-dark fs-4"><Link className='text-decoration-none text-light' to='/'>Home</Link></button>
+              <span class="navbar-brand mb-0 h1 text-light fs-2"><Link className="text-light text-decoration-none" to='/'>Cantina Sociale Bordeaux</Link></span>
+         
            </div>
         </nav>
 
