@@ -38,7 +38,7 @@ function Registrazione() {
    const handleSubmit = (e) => {
 
       e.preventDefault();
-      
+
       if(nome === "" && cognome === "" && datadinascita === "" && luogodinascita === "" && indirizzo === "" && residenza === "" && sesso === "" && email === "" && password === "" && checkbox == "") {
 
          setAvviso1("*Campo obbligatorio");
@@ -291,14 +291,14 @@ function Registrazione() {
 
                <div className="col md-6">
 
-                  <label htmlFor="sesso" className="form-label fs-4 text-light" id="sesso">Sesso:</label>
+                  <label htmlFor="sesso" className="form-label fs-4 text-light" >Sesso:</label>
                   <input className="form-check-input mt-3 ms-5" name="sesso" type="radio" id="maschio" checked={sesso} onChange={ (e) => setSesso(e.target.checked) }/>
                   <label htmlFor="sesso" className="form-label fs-4 text-light mt-1 ms-2">Maschio</label>
                   </div>
 
                <div className="col md-6">   
                   <input  className="form-check-input mt-3" name="sesso" type="radio" id="femmina" checked={sesso} onChange={ (e) => setSesso(e.target.checked) } />
-                  <label htmlFor="sesso" name="sesso" className="form-label fs-4 text-light mt-1 ms-2">Femmina</label>
+                  <label htmlFor="sesso"  className="form-label fs-4 text-light mt-1 ms-2">Femmina</label>
                   <p className="text-danger  fs-5 fw-bolder" id="avv7">{avviso7}</p>
                </div>
 

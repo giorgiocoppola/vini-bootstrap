@@ -67,11 +67,11 @@ const Vini = ({nome,img,prezzo,max}) => {
   return (
     <div className="vini mb-5">
          <div className="card pb-4 me-5" style={{width: "400px", textAlign:'center'}}>
-            <img src={img} class="card-img-top" alt={nome} width="400px" height="400px" />
-            <div class="card-body">
-               <h5 class="card-title fs-4 text-success">{nome}</h5>
-              <p class="card-text fs-4">{prezzo} €</p>
-              <p class="card-text fs-4">{count}</p>
+            <img src={img} className="card-img-top" alt={nome} width="400px" height="400px" />
+            <div className="card-body">
+               <h5 className="card-title fs-4 text-success">{nome}</h5>
+              <p className="card-text fs-4">{prezzo} €</p>
+              <p className="card-text fs-4">{count}</p>
             </div>
 
             <div className="btn-1">
