@@ -31,11 +31,14 @@ function Registrazione() {
    const [avviso10,setAvviso10] = useState("");
    const [avviso11,setAvviso11] = useState("");
    const [avviso12,setAvviso12] = useState("");
+   const [avviso13,setAvviso13] = useState("");
    const [persona,setPersona] = useState([]);
 
 
    const handleSubmit = (e) => {
 
+      e.preventDefault();
+      
       if(nome === "" && cognome === "" && datadinascita === "" && luogodinascita === "" && indirizzo === "" && residenza === "" && sesso === "" && email === "" && password === "" && checkbox == "") {
 
          setAvviso1("*Campo obbligatorio");
@@ -162,7 +165,11 @@ function Registrazione() {
     }
    
 
-      e.preventDefault();
+      
+
+      if(nome !== "" && cognome !== "" && datadinascita !== "" && luogodinascita !== "" && indirizzo !== "" && residenza !== "" && sesso !== "" && email !== "" && password !== "" && checkbox !== "") {
+
+      
       setNome("");
       setCognome("");
       setDatadinascita("");
@@ -175,23 +182,28 @@ function Registrazione() {
       setEmail("");
       setPassword("");
       setMessaggio("");
-      setCheckbox(""); 
+      setCheckbox("");
+      setAvviso13("Messaggio inviato");
+      setTimeout( function() { setAvviso13("")},3000)
       setPersona( [...persona, { id : persona.length + 1,
-                               nome: nome, 
-                               cognome: cognome,
-                               datadinascita: datadinascita,
-                               luogodinascita: luogodinascita,
-                               indirizzo: indirizzo,
-                               residenza: residenza,
-                               sesso: sesso,
-                               telefono: telefono,
-                               cellulare: cellulare,
-                               email: email,
-                               password: password,
-                               messaggio: messaggio,
-                               checkbox: checkbox
-                            }
-                   ] )
+         nome: nome, 
+         cognome: cognome,
+         datadinascita: datadinascita,
+         luogodinascita: luogodinascita,
+         indirizzo: indirizzo,
+         residenza: residenza,
+         sesso: sesso,
+         telefono: telefono,
+         cellulare: cellulare,
+         email: email,
+         password: password,
+         messaggio: messaggio,
+         checkbox: checkbox
+      }
+] )
+      }
+
+      
      // alert("Accesso avvenuto con successo");
   }
 
@@ -202,9 +214,9 @@ function Registrazione() {
 
      <div className="registrazione-pagina">
 
-        <nav class="navbar bg-danger">
-           <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1 text-light fs-2"><Link className="text-light text-decoration-none" to='/'>Cantina Sociale Bordeaux</Link></span>
+        <nav className="navbar  bg-danger">
+           <div className="container-fluid">
+              <span className="navbar-brand mb-0 h1 text-light fs-2"><Link className="text-light text-decoration-none" to='/'>Cantina Sociale Bordeaux</Link></span>
          
            </div>
         </nav>
@@ -219,7 +231,7 @@ function Registrazione() {
 
                    <div className="col md-6">
 
-                      <label for="name" className="form-label fs-4 text-light">Nome:</label>
+                      <label htmlFor="name" className="form-label fs-4 text-light">Nome:</label>
                       <input type="text" name="name" className="form-control border-info" value={nome} onChange = { (e) => setNome(e.target.value)} placeholder="Inserisci il nome" /> 
                       <p className="text-danger fs-5 text-center fw-bolder">{avviso1}</p>
 
@@ -227,7 +239,7 @@ function Registrazione() {
 
                    <div className="col md-6">
 
-                      <label for="surname" className="form-label fs-4 text-light">Cognome:</label>
+                      <label htmlFor="surname" className="form-label fs-4 text-light">Cognome:</label>
                       <input type="text" name="surname" id="cognome" className="form-control border-info" value={cognome} onChange = { (e) => setCognome(e.target.value)} placeholder="Inserisci il cognome" />
                       <p className="text-danger fs-5 text-center fw-bolder">{avviso2}</p>
 
@@ -242,14 +254,14 @@ function Registrazione() {
 
                   <div className="col md-6">
 
-                     <label for="date" className="form-label fs-4 text-light">Data di nascita:</label>
+                     <label htmlFor="date" className="form-label fs-4 text-light">Data di nascita:</label>
                      <input type="date" name="date" className="form-control border-info" id="datadinascita" value={datadinascita} onChange={ (e) => setDatadinascita(e.target.value) } />
                      <p className="text-danger text-center fs-5 fw-bolder">{avviso3}</p>
 
                   </div>
 
                   <div className="col md-6">
-                     <label for="luogo" className="form-label fs-4 text-light" >Luogo di nascita:</label>
+                     <label htmlFor="luogo" className="form-label fs-4 text-light" >Luogo di nascita:</label>
                      <input type="text" name="luogo"  className="form-control border-info" id="luogodinascita" value={luogodinascita} onChange= { (e) => setLuogodinascita(e.target.value)} />
                      <p className="text-danger text-center fs-5 fw-bolder">{avviso4}</p>
                   </div>
@@ -260,13 +272,13 @@ function Registrazione() {
                
                 <div className="col md-6">
 
-                  <label for="address" className="form-label fs-4 text-light" >Indirizzo:</label>
+                  <label htmlFor="address" className="form-label fs-4 text-light" >Indirizzo:</label>
                   <input type="text" name="address" className="form-control border-info" value={indirizzo} onChange={ (e) => setIndirizzo(e.target.value) } />
                   <p className="text-danger text-center fs-5 fw-bolder">{avviso5}</p>
 
                 </div>
                <div className="col md-6">
-                  <label for="residenza" className="form-label fs-4 text-light">Residenza:</label>
+                  <label htmlFor="residenza" className="form-label fs-4 text-light">Residenza:</label>
                   <input type="text" name="residenza" className="form-control border-info" id="residenza" value={residenza} onChange={ (e) => setResidenza(e.target.value) } />
                   <p className="text-danger text-center fs-5 fw-bolder">{avviso6}</p>
                </div>
@@ -279,14 +291,14 @@ function Registrazione() {
 
                <div className="col md-6">
 
-                  <label for="sesso" className="form-label fs-4 text-light" id="sesso">Sesso:</label>
-                  <input class="form-check-input mt-3 ms-5" type="radio" id="defaultCheck1" checked={sesso} onChange={ (e) => setSesso(e.target.checked) }/>
-                  <label for="sesso" className="form-label fs-4 text-light mt-1 ms-2">Maschio</label>
+                  <label htmlFor="sesso" className="form-label fs-4 text-light" id="sesso">Sesso:</label>
+                  <input className="form-check-input mt-3 ms-5" name="sesso" type="radio" id="maschio" checked={sesso} onChange={ (e) => setSesso(e.target.checked) }/>
+                  <label htmlFor="sesso" className="form-label fs-4 text-light mt-1 ms-2">Maschio</label>
                   </div>
 
                <div className="col md-6">   
                   <input  className="form-check-input mt-3" name="sesso" type="radio" id="femmina" checked={sesso} onChange={ (e) => setSesso(e.target.checked) } />
-                  <label for="sesso" className="form-label fs-4 text-light mt-1 ms-2">Femmina</label>
+                  <label htmlFor="sesso" name="sesso" className="form-label fs-4 text-light mt-1 ms-2">Femmina</label>
                   <p className="text-danger  fs-5 fw-bolder" id="avv7">{avviso7}</p>
                </div>
 
@@ -303,14 +315,14 @@ function Registrazione() {
 
                   <div className="col md-6">   
 
-                     <label for="tel" className="form-label fs-4 text-light" id="telefono">Telefono:</label>
+                     <label htmlFor="tel" className="form-label fs-4 text-light" id="telefono">Telefono:</label>
                      <input type="tel" name="tel" className="form-control border-info" value={telefono} onChange={ (e)=> setTelefono(e.target.value)} />
                      <p className="text-danger text-center fs-5 fw-bolder" id="avv8">{avviso8}</p>
                   </div>
 
                      <div className="col md-6">
 
-                     <label for="tel" className="form-label fs-4 text-light" id="cellulare">Cellulare:</label>
+                     <label htmlFor="tel" className="form-label fs-4 text-light" id="cellulare">Cellulare:</label>
                      <input type="tel" name="tel" className="form-control border-info" id="input-cell" value={cellulare} onChange={ (e)=> setCellulare(e.target.value)} />
                      <p className="text-danger text-center fs-5 fw-bolder" id="avv9">{avviso9}</p>
                     </div>
@@ -322,7 +334,7 @@ function Registrazione() {
                     
                 <div className="col md-6">
 
-                   <label for="email" className="form-label fs-4 text-light" id="email">E-mail:</label>
+                   <label htmlFor="email" className="form-label fs-4 text-light" id="email">E-mail:</label>
                    <input type="email" name="email"  className="form-control border-info" id="inp-email" value={email} onChange={ (e) => setEmail(e.target.value)} />
                    <p className= "text-danger text-center fs-5 fw-bolder" id="avv10">{avviso10}</p>
                 </div>
@@ -336,7 +348,7 @@ function Registrazione() {
                 <div className="col md-6">
                
 
-                   <label for="password" className="form-label fs-4 text-light" id="password">Password:</label>
+                   <label htmlFor="password" className="form-label fs-4 text-light" id="password">Password:</label>
                    <input type="password" name="password" className="form-control border-info" id="inp-pass" value={password} onChange={ (e) => setPassword(e.target.value)} />
                    <p className="text-danger text-center fs-5 fw-bolder" >{avviso11}</p>
                 </div>
@@ -347,7 +359,7 @@ function Registrazione() {
                 <div className="row g-3">
          
                  <div className="col md-6">
-                   <label for="messaggio" className="form-label fs-4 text-light mx-auto" id="label-mess">Messaggio:</label> 
+                   <label htmlFor="messaggio" className="form-label fs-4 text-light mx-auto" id="label-mess">Messaggio:</label> 
 
                  </div>
                 </div>
@@ -355,14 +367,14 @@ function Registrazione() {
                 <br />
                  <div className="col md-6 w-75 mx-auto">
 
-                   <textarea class="form-control"  id="floatingTextarea2" name="messaggio" cols="80" rows="15" value={messaggio} onChange= { (e) => setMessaggio(e.target.value) }></textarea>
+                   <textarea className="form-control"  id="floatingTextarea2" name="messaggio" cols="80" rows="15" value={messaggio} onChange= { (e) => setMessaggio(e.target.value) }></textarea>
 
                 </div>
            
                 <div className="elenco-form" id="dati-personali">
 
                    <input type="checkbox" className="checklist" id="check" checked={checkbox} onChange= { (e) => setCheckbox(e.target.checked) } />
-                   <label for="autorizzazione" className="form-label fs-5 text-light ms-2 mt-4 mb-3"  id="aut">Autorizzo il trattamento dei <span>dati personali</span></label>
+                   <label htmlFor="autorizzazione" className="form-label fs-5 text-light ms-2 mt-4 mb-3"  id="aut">Autorizzo il trattamento dei <span>dati personali</span></label>
                    <p className="text-danger fs-5 fw-bolder">{avviso12}</p>
                 </div>
 
@@ -372,6 +384,8 @@ function Registrazione() {
 
               
                     <button className="btn btn-success fs-4" onClick={handleSubmit}>Invia</button>
+                    <p className= "text-success text-center fs-5 fw-bolder" id="avv10">{avviso13}</p>
+                  
 
                  </div>
 

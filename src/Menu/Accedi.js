@@ -30,7 +30,7 @@ function Accedi() {
      
       if(email === "" ) {
 
-        
+        setPassword(password);
         setMessage("*Campo obbligatorio");
         setTimeout(function() { setMessage("")},3000);
           
@@ -38,26 +38,32 @@ function Accedi() {
 
       if(password === "" ) {
 
-
+        setEmail(email);
         setMessage2("*Campo obbligatorio");
         setTimeout(function() { setMessage2("")},3000);
           
       }
       
-      setAccesso( [ ...accesso, {
-                                  id: accesso.length + 1,
-                                  email:email,
-                                  password:password
-                                }
 
-                  ])
                   
       e.preventDefault();
+
+      if( email !== "" && password !== "" ) {
+
+      
       setEmail("");
       setPassword("");  
       setMessage3("Messaggio inviato")
       setTimeout( function() { setMessage3("")},3000)
+      setAccesso( [ ...accesso, {
+         id: accesso.length + 1,
+         email:email,
+         password:password
+       }
 
+])
+
+   }
  }
 
  
@@ -65,9 +71,9 @@ function Accedi() {
   return (
     <div className='accedi-pagina'>
   
-       <nav class="navbar bg-danger">
-          <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1 text-light fs-2"><Link className="text-light text-decoration-none" to='/'>Cantina Sociale Bordeaux</Link></span>
+       <nav className="navbar bg-danger">
+          <div className="container-fluid">
+              <span className="navbar-brand mb-0 h1 text-light fs-2"><Link className="text-light text-decoration-none" to='/'>Cantina Sociale Bordeaux</Link></span>
            
           </div>
        </nav>
