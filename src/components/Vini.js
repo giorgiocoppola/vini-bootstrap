@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 
 
@@ -10,6 +10,19 @@ const Vini = ({nome,img,prezzo,max}) => {
    
     
     const min = 0;
+
+    useEffect( () => {
+
+      if(count === 1) {
+
+      
+      console.log(`Aggiungo ${count} bottiglia di ${nome} nel menu' `);
+
+      } else {
+
+      console.log(`Aggiungo ${count} bottiglie di ${nome} nel menu' `);
+      }
+    },[nome,count]);
 
     const incrementa = () => {
 
