@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 
 
 
-const Vini = ({nome,img,prezzo,max}) => {
+const Vini = ({id,nome,img,prezzo,max,handleDelete}) => {
 
 
     const [count,setCount] = useState(0);
@@ -96,6 +96,7 @@ const Vini = ({nome,img,prezzo,max}) => {
             <div className="btn-2 mt-3">
               
               <button className="btn bg-primary text-light" onClick={acquista}>Acquista</button> 
+              <button className="btn bg-primary text-light ms-3" onClick={()=> handleDelete(id)}>Elimina</button> 
               <p className="card-text text-danger">{message}</p> 
  
           </div>
